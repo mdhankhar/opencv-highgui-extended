@@ -11,7 +11,6 @@
 
 using namespace cv;
 
-
 //===============================
 void OpenCVGUI::mouse_callback(int event, int x, int y, int flags, void* param)
 //===============================
@@ -26,7 +25,7 @@ void OpenCVGUI::mouse_callback(int event, int x, int y, int flags, void* param)
 }
 
 //===============================
-OpenCVGUI::OpenCVGUI(string  title)
+OpenCVGUI::OpenCVGUI(string title)
 //===============================
 {
     title_ = title;
@@ -60,12 +59,12 @@ void OpenCVGUI::InterpretMouseEvents()
     {
         params_.event = -1;
         // call button press callback
-        if(elements_[last_pressed_index_].type_ == 0)
-            {
-                //button
-                elements_[last_pressed_index_].value_ = false;
-                elements_[last_pressed_index_].button_callback();
-            }
+        if (elements_[last_pressed_index_].type_ == 0)
+        {
+            //button
+            elements_[last_pressed_index_].value_ = false;
+            elements_[last_pressed_index_].button_callback();
+        }
         else
         {
             // checkbox
@@ -78,9 +77,10 @@ void OpenCVGUI::InterpretMouseEvents()
     {
         // find out which button is pressed
         int y = params_.y - 10;
-        last_pressed_index_ = y/50;
+        last_pressed_index_ = y / 50;
         //cout<<"pressed_index:"<<pressed_index<<endl;
-        if(elements_[last_pressed_index_].type_ == 0) elements_[last_pressed_index_].value_ = true; //button
+        if (elements_[last_pressed_index_].type_ == 0)
+            elements_[last_pressed_index_].value_ = true; //button
     }
 }
 
@@ -89,22 +89,25 @@ void OpenCVGUI::DisplayElements()
 //===============================
 {
     // each element is 50 pixels high
-    if((int)elements_.size() > 0 && frame_height_ < 20 + 50*((int)elements_.size()))
+    if ((int) elements_.size() > 0 && frame_height_ < 20 + 50 * ((int) elements_.size()))
     {
-        frame_height_ = 20 + 50*elements_.size();
+        frame_height_ = 20 + 50 * elements_.size();
         frame_ = Mat::zeros(frame_height_, frame_width_, CV_8UC3);
         rectangle(frame_, Point(0, 0), Point(frame_width_, frame_height_), Scalar(249, 246, 241), -1, 8);
     }
 
     // draw all elements
-    for(int i=0; i < (int)elements_.size(); i++)
+    for (int i = 0; i < (int) elements_.size(); i++)
     {
-        if(elements_[i].value_) rectangle(frame_, Point(10, 10 + i*50), Point(390, 50 + i*50), Scalar(72, 146, 72), -1, CV_AA);
-        else rectangle(frame_, Point(10, 10 + i*50), Point(390, 50 + i*50), Scalar(81, 163, 81), -1, CV_AA);
-        putText(frame_, elements_[i].text_, Point(10, 35 + i*50), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(255, 255, 255), 1, CV_AA);
+        if (elements_[i].value_)
+            rectangle(frame_, Point(10, 10 + i * 50), Point(390, 50 + i * 50), Scalar(72, 146, 72), -1, CV_AA);
+        else
+            rectangle(frame_, Point(10, 10 + i * 50), Point(390, 50 + i * 50), Scalar(81, 163, 81), -1, CV_AA);
+        putText(frame_, elements_[i].text_, Point(10, 35 + i * 50), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(255, 255, 255), 1, CV_AA);
 
         // if check box, put a extra thin boundary rectangle
-        if(elements_[i].type_ == 1) rectangle(frame_, Point(10, 10 + i*50), Point(390, 50 + i*50), Scalar(61, 123, 61), 2, CV_AA);
+        if (elements_[i].type_ == 1)
+            rectangle(frame_, Point(10, 10 + i * 50), Point(390, 50 + i * 50), Scalar(61, 123, 61), 2, CV_AA);
     }
 }
 

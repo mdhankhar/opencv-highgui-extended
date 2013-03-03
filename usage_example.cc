@@ -16,10 +16,10 @@ void checkbox_callback_2(bool value);
 int main()
 {
     // create an OpenCVGUI instance
-	OpenCVGUI gui((char*) "My New GUI");
+    OpenCVGUI gui((char*) "My New GUI");
 
-	// add 2 buttons
-	gui.AddButton("Button 1", button_callback_1);
+    // add 2 buttons
+    gui.AddButton("Button 1", button_callback_1);
     gui.AddButton("Button 2", button_callback_2);
 
     // add 2 check boxes
@@ -28,28 +28,28 @@ int main()
 
     // prevent the program from exiting
     int temp;
-	cin >> temp;
+    cin >> temp;
 
-	return 0;
+    return 0;
 }
 
 void button_callback_1()
 {
-    cout<<"Button 1 got pressed"<<endl;
+    cout << "Button 1 got pressed" << endl;
 }
 
 void button_callback_2()
 {
-    cout<<"Button 2 got pressed"<<endl;
+    cout << "Button 2 got pressed" << endl;
 }
 
 void checkbox_callback_1(bool value)
 {
-    cout<<"CheckBox 1 value:"<<value<<endl;
+    cout << "CheckBox 1 value:" << value << endl;
 }
 
 void checkbox_callback_2(bool value)
 {
-    cout<<"CheckBox 2 value:"<<value<<endl;
+    cout << "CheckBox 2 value:" << value << endl;
 }
 

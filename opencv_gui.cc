@@ -120,8 +120,7 @@ void* OpenCVGUI::Run(void)
         DisplayElements();
         InterpretMouseEvents();
         imshow(title_.c_str(), frame_);
-
-        if (waitKey(50) > 0) break;
+        waitKey(50);
     }
 
     return NULL;

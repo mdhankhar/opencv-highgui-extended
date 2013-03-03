@@ -1,0 +1,5 @@
+OpenCVGUI class provides buttons and checkbox support in highgui. Since Highgui lacks buttons and checkboxes, there's no way to have these gui elements in OpenCV without using 3rd party libraries like Qt.
+
+OpenCVGUI is itself written in highgui, so no external libraries are required.
+
+Checkout usage_example.cc for sample code.
